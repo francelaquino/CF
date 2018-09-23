@@ -30,18 +30,19 @@ app.get('/sendNotification', function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         let token = req.query.token;
         let messaging = req.query.message;
-        let message = {
-            notification: {
-                title: messaging,
-                smallIcon: "ic_launcher"
-            },
-        };
         /*let message = {
-            data: {
+            notification: {
               title: messaging,
               icon : "ic_launcher"
             },
-        };*/
+          };
+          */
+        let message = {
+            data: {
+                title: messaging,
+                icon: "ic_launcher"
+            },
+        };
         let options = {
             priority: "high",
             sound: "default",

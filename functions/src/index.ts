@@ -32,20 +32,25 @@ app.get('/sendNotification', async function (req, res) {
     let token=req.query.token;
     let messaging=req.query.message;
 
-    let message = {
+    /*let message = {
         notification: {
           title: messaging,
           icon : "ic_launcher"
         },
       };
-      
+      */
 
-    /*let message = {
+    let message = {
         data: {
           title: messaging,
           icon : "ic_launcher"
-        },
-    };*/
+        },/*
+        notification: {
+          title: messaging,
+          icon : "ic_launcher"
+        }*/
+        };
+          
 
        let options = {
             priority: "high",
