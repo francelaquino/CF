@@ -42,14 +42,10 @@ app.get('/sendNotification', async function (req, res) {
 
     let message = {
         data: {
-          title: messaging,
-          icon : "ic_launcher"
-        },/*
-        notification: {
-          title: messaging,
-          icon : "ic_launcher"
-        }*/
-        };
+          title: "My GPS Buddy",
+          body:messaging,
+        },
+    };
           
 
        let options = {

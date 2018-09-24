@@ -39,8 +39,8 @@ app.get('/sendNotification', function (req, res) {
           */
         let message = {
             data: {
-                title: messaging,
-                icon: "ic_launcher"
+                title: "My GPS Buddy",
+                body: messaging,
             },
         };
         let options = {
