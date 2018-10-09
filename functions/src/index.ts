@@ -19,6 +19,8 @@ app.get('/saveLocation', function (req, res) {
 
     db.ref("users/" + ownerid + "/members/").child(userid).set({
         lastmovement: Date.now(),
+        latitude:lat,
+        longitude:lon
     })
 
     res.send("updated");

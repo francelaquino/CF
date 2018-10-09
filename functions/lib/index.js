@@ -23,6 +23,8 @@ app.get('/saveLocation', function (req, res) {
     let ownerid = req.query.ownerid;
     db.ref("users/" + ownerid + "/members/").child(userid).set({
         lastmovement: Date.now(),
+        latitude: lat,
+        longitude: lon
     });
     res.send("updated");
 });
