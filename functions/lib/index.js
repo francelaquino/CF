@@ -26,6 +26,22 @@ app.get('/saveLocation', function (req, res) {
         latitude: lat,
         longitude: lon
     });
+    db.ref("users/" + userid).set({
+        lastmovement: Date.now(),
+        latitude: lat,
+        longitude: lon
+    });
+    res.send("updated");
+});
+app.get('/saveUserLocation', function (req, res) {
+    let lat = req.query.lat;
+    let lon = req.query.lon;
+    let userid = req.query.userid;
+    db.ref("users/" + userid).set({
+        lastmovement: Date.now(),
+        latitude: lat,
+        longitude: lon
+    });
     res.send("updated");
 });
 app.get('/sendNotification', function (req, res) {
