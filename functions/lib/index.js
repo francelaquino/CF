@@ -16,6 +16,14 @@ admin.initializeApp(functions.config().firebase);
 const router = express.Router();
 const db = admin.database();
 const app = express();
+app.get('/sendProfileUpdate', function (req, res) {
+    let userid = req.query.userid;
+    let ownerid = req.query.ownerid;
+    db.ref("users/" + ownerid + "/members/").child(userid).udpate({
+        lastmovement: Date.now(),
+    });
+    res.send("updated");
+});
 app.get('/saveLocation', function (req, res) {
     let lat = req.query.lat;
     let lon = req.query.lon;
@@ -48,13 +56,6 @@ app.get('/sendNotification', function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         let token = req.query.token;
         let messaging = req.query.message;
-        /*let message = {
-            notification: {
-              title: messaging,
-              icon : "ic_launcher"
-            },
-          };
-          */
         let message = {
             data: {
                 title: "My GPS Buddy",

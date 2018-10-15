@@ -11,6 +11,22 @@ const app = express()
 
 
 
+app.get('/sendProfileUpdate', function (req, res) {
+  let userid = req.query.userid;
+  let ownerid = req.query.ownerid;
+
+  db.ref("users/" + ownerid + "/members/").child(userid).udpate({
+      lastmovement: Date.now(),
+  })
+
+ 
+
+  res.send("updated");
+
+
+})
+
+
 app.get('/saveLocation', function (req, res) {
     let lat = req.query.lat;
     let lon = req.query.lon;
@@ -55,13 +71,7 @@ app.get('/sendNotification', async function (req, res) {
     let token=req.query.token;
     let messaging=req.query.message;
 
-    /*let message = {
-        notification: {
-          title: messaging,
-          icon : "ic_launcher"
-        },
-      };
-      */
+    
 
     let message = {
         data: {
